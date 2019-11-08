@@ -1,0 +1,225 @@
+//To create a table for Employee 
+
+drop table Employee cascade constraints;
+create table Employee
+(EmpID integer not null,
+EmpFirstName char(20) not null,
+EmpLastName char(20) not null,
+EmpStreetNo integer not null,
+EmpStreetName char(20) not null,
+EmpCity char(20) not null,
+EmpState char(20) not null,
+EmpZip integer not null,
+EmpPhone integer not null,
+EmpEmail char(30) not null,
+primary key (EmpID));
+
+insert into Employee values
+(1, 'Roxana', 'Colbrun', '4528', 'Monument', 'Washington', 'District of Columbia', '20046', '2023532478', 'rcolbrun0@fastcompany.com');
+insert into Employee values
+(2, 'Hendrick', 'Wadeson', '0814', 'Bultman', 'Charleston', 'West Virginia', '25389', '3044285502', 'hwadeson1@time.com');
+insert into Employee values 
+(3, 'Delano', 'Norree', '9', 'Granby', 'Dallas', 'Texas', '75210', '2147799175', 'norreed9@aol.com');
+insert into Employee values
+(4, 'Chiquita', 'Heeks', '84593', 'Commercial', 'Aurora', 'Colorado', '89767', '2147797915', 'cheeks3@360.com');
+insert into Employee values
+(5, 'Florentia', 'Snell', '4', 'Monterey', 'Madison', 'Wisconsin', '75210', '2198749467', 'fsnell4@dot.gov');
+insert into Employee values
+(6, 'Maurie', 'Meadows', '32451', 'Sachs', 'Fort Pierce', 'Florida', '78569', '8907898765',     'mmeadows5@technorati.com');  
+insert into Employee values
+(7, 'Halle', 'Croneen', '8541', 'Marquette', 'Port Washington', 'New York', '11054', '5161522684', 'hcroneen6@ox.ac.uk');
+insert into Employee values
+(8, 'Mariette', 'Kytley', '43892', 'Clemons', 'New York City', 'New York', '10292', '2123540741', 'mkytley7@plala.or.jp');
+insert into Employee values
+(9, 'Sammy', 'Chippindale', '3', 'Kings', 'Monticello', 'Minnesota', '55585', '7631675750', 'schippindale8@ft.com');
+
+
+
+
+//To Create a table for Customer
+drop table Customer cascade constraints;
+create table Customer
+(CustID integer not null,
+CustFirstName char(20) not null,
+CustLastName char(20) not null,
+CustStreetNo integer not null,
+CustStreetName char(20) not null,
+CustCity char(20) not null,
+CustState char(20) not null,
+CustZip integer not null,
+CustPhone integer not null,
+CustEmail char(30) not null,
+DateEntered date not null,
+primary key (CustID));
+
+
+
+insert into Customer values (1, 'Rip', 'Gerling', '200', 'Mitchell', 'Lafayette', 'Louisiana', '70593', '3378752402', 'rgerling0@surveymonkey.com', '12/jan/2017');
+insert into Customer values (2, 'Katherina', 'Paye', '090', 'Red Cloud', 'Fort Lauderdale', 'Florida', '33336', '7546661320', 'kpaye1@xing.com', '11/jan/2017');
+insert into Customer values (3, 'Ginevra', 'Addlestone', '2351', 'Londonderry', 'Los Angeles', 'California', '90065', '8186210828', 'gaddlestone2@techcrunch.com', '4/jan/2017');
+insert into Customer values (4, 'Rab', 'Daud', '9', 'Hayes', 'Pittsburgh', 'Pennsylvania', '15266', '5556390182', 'rdaud3@yolasite.com', '10/jan/2017');
+insert into Customer values (5, 'Laureen', 'Ditchfield', '81', 'Claremont', 'Roanoke', 'Virginia', '24034', '5402517929', 'lditchfield4@fieldburner.com', '13/jan/2017');
+insert into Customer values (6, 'Angelina', 'Ricardo', '897', 'Mission', 'Austin', 'Texas', '98230', '9870009870', 'ricangel8@aol.com', '21/jan/2017');
+insert into Customer values (7, 'Laura', 'Coppello', '980', 'Bernhardt', 'Garfield', 'Texas', '90987', '9807123543', 'kpaye1@xing.com', '21/jan/2017');
+insert into Customer values (8, 'Jeff', 'Bezos', '001', 'Michigan', 'Red City', 'South Alabama', '90879', '7895647390', 'bezosjeff9@aol.com', '23/jan/2017');
+insert into Customer values (9, 'Simon', 'Benjamin', '800', 'Redhawk', 'Kathmandu', 'Montana', '99987', '9874200098', 'benjsmon7@techcrunch.com', '27/jan/2017');
+
+
+
+
+
+// To create a value for Warehouse
+drop table Warehouse cascade constraints;
+create table Warehouse
+(WarehouseID integer not null,
+WarehouseName char(25) not null,
+WarehouseStreetNo integer not null,
+WarehouseStreetName char(20) not null,
+WarehouseCity char(20) not null,
+WarehouseState char(2) not null,
+WarehouseZip integer not null,
+WarehousePhone integer not null,
+primary key (WarehouseID));
+
+insert into Warehouse values 
+(1, 'Photobug', '0781', 'Waxwing', 'Oklahoma City', 'OK', '73167', '4055334253');
+insert into Warehouse values 
+(2, 'Skilith', '97209', 'Del Sol', 'Fort Collins', 'CO', '80525', '9701427060');
+insert into Warehouse values
+(3, 'Aimbu', '0715', 'Anhalt', 'Kansas City', 'MO', '64179', '8164582225');
+insert into Warehouse values 
+(4, 'Feednation', '22108', 'Bluejay', 'Dayton', 'OH', '45454', '9373863415');
+insert into Warehouse values 
+(5, 'Techbrunch', '0781', 'Waxwing', 'Oklahoma City', 'OK', '73167', '9096758356');
+insert into Warehouse values 
+(6, 'Laughingsquid', '0981', 'Zinghsen', 'Edmond', 'OK', '73167', '7955334250');
+insert into Warehouse values 
+(7, 'Spacex', '0781', 'Bernhardt', 'Denton', 'TX', '73167', '2125334253');
+insert into Warehouse values 
+(8, 'Eiffel', '10001', 'Waxwing', 'St Louis', 'MO', '73167', '8185334253');
+insert into Warehouse values 
+(9, 'ProjectX', '9003', 'Geary', 'San Francisco', 'CA', '73167', '9096758356');
+
+// To create a table for CustonerOrder 
+drop table CustomerOrder cascade constraints;
+create table CustomerOrder
+(OrderID integer not null,
+OrdersDate date not null,
+CustID integer not null,
+OrderStatus char(15) not null,
+OrderPayment char(15) not null,
+Time TIMESTAMP not null,
+Shipdate date not null,
+primary key (OrderID),
+foreign key (CustID) REFERENCES Customer (CustID));
+
+insert into CustomerOrder values 
+(1, '06/jan/2017', 1, 'Processing', 'laser', '13-jul-17 10:01:01.99', '28-jul-17');
+insert into CustomerOrder values 
+(2, '09/jan/2017', 2, 'Processing', 'jcb', '24-oct-17 06:01:01.99', '04-oct-18');
+insert into CustomerOrder values 
+(3, '01/jan/2018', 3, 'Processing', 'jcb', '16-aug-17 07:01:01.99', '01-aug-18');
+insert into CustomerOrder values 
+(4, '04/jan/2017', 4, 'Processing', 'laser', '02-sep-17 08:01:01.99', '25-oct-18');
+insert into CustomerOrder values 
+(5, '09/jan/2017', 5, 'Processing', 'dinersclub', '22-jan-17 08:01:01.99', '19-jan-17');
+insert into CustomerOrder values 
+(6, '06/jan/2017', 6, 'Processing', 'jcb', '09-jun-17 09:01:01.99', '10-jun-18');
+insert into CustomerOrder values 
+(7, '06/jan/2017', 7, 'Processing', 'jcb', '22-jan-17 11:01:01.99', '09-feb-17');
+insert into CustomerOrder values 
+(8, '06/jan/2017', 8, 'Processing', 'instapayment', '06-jul-17 04:01:01.99', '15-jul-16');
+insert into CustomerOrder values 
+(9, '06/jan/2017', 9, 'Processing', 'maestro', '09-mar-17 03:01:01.99', '12-mar-18');
+
+// To create a table for Product
+drop table Product cascade constraints;
+create table Product
+(ProductID integer not null,
+OrderID integer not null,
+ProductName char(30) not null,
+Description char(30) not null,
+Color char(10) not null,
+ProductSize char(5) not null,
+Price decimal (6,2) not null CHECK(PRICE >= 0.0),
+primary key (ProductID),
+foreign key (OrderID) REFERENCES CustomerOrder (OrderID));
+
+insert into Product values (1, 1, 'Dresses', 'Floral dresses', 'Blue', 'XL', '30.64');
+insert into Product values (2, 2, 'Jeans', 'Print jeans', 'Orange', 'M','69.65');
+insert into Product values (3, 3, 'Dresses', 'Vacation dresses', 'Yellow', 'XL','25.41');
+insert into Product values (4, 4, 'Long dress', 'Prom dresses', 'Puce', 'XS', '42.33');
+insert into Product values (5, 5, 'Dresses', 'Cocktail dresses', 'Teal', 'XL', '30.64');
+insert into Product values (6, 6, 'Skirt', 'Party dresses', 'Goldenrod', 'XS', '22.64');
+insert into Product values (7, 7, 'Skater dress', 'Wedding dresses', 'Maroon', 'M', '25.64');
+insert into Product values (8, 8, 'Pants', 'Nightout pants', 'Blue', 'L', '30.64');
+insert into Product values (9, 9, 'Dresses', 'Formal dresses', 'Purple', 'M', '30.64');
+
+
+drop table Supplier cascade constraints;
+create table Supplier
+(SupplierID integer not null,
+SupplierName char(20) not null,
+SupplierStreetNo integer not null,
+SupplierStreetName char(20) not null,
+SupplierCity char(20) not null,
+SupplierState char(2) not null,
+SupplierZip integer not null,
+SupplierPhone integer not null,
+SupplierEmail char(50) not null,
+primary key (SupplierID));
+
+insert into Supplier values (1, 'Eidel', '88', 'Dryden', 'Huntington', 'WV', '25770', '3045721366', 'cmcguigan0@techcrunch.com');
+insert into Supplier values (2, 'Skajo', '3', 'Rutledge', 'San Antonio', 'TX', '78278', '2105815652', 'lmacnaughton1@wikia.com');
+insert into Supplier values (3, 'Zoomcast', '00', 'Kropf', 'Saint Paul', 'MN', '55127', '6123591190', 'tcess2@umich.edu');
+insert into Supplier values (4, 'Zoomlounge', '84', 'Steensland', 'Tacoma', 'WA', '98481', '2539769731', 'hlonghurst3@stumbleupon.com');
+insert into Supplier values (5, 'Skajo', '3', 'Rutledge', 'San Antonio', 'TX', '78278', '2105815652', 'lmacnaughton1@wikia.com');
+insert into Supplier values (6, 'Zoomcast', '00', 'Kropf', 'Saint Paul', 'MN', '55127', '6123591190', 'tcess2@umich.edu');
+insert into Supplier values (7, 'Yacero', '28', 'Sugar', 'Dayton', 'OH', '45408', '3045721366', 'atummond6@prweb.com');
+insert into Supplier values (8, 'Zoombox', '676', 'Tomscot', 'Lake Charles', 'LA', '25770', '3045721366', 'ajaffa7@statcounter.com'); 
+insert into Supplier values (9, 'Browsebug', '8', 'Oldshore', 'Springfield', 'IL', '25770', '3045721366', 'wrable8@bloglines.com');
+
+
+drop table Supplies cascade constraints;
+create table Supplies
+(SupplierID integer not null,
+ProductID integer not null,
+DateSupplied date not null,
+SuppliedQuantity integer not null,
+primary key (SupplierID, ProductID, DateSupplied),
+foreign key (SupplierID) REFERENCES Supplier (SupplierID),
+foreign key (ProductID) REFERENCES Product (ProductID));
+
+insert into Supplies values (1, 1, '01-jan-17', '20');
+insert into Supplies values (2, 2, '04-jan-17', '20');
+insert into Supplies values (3, 3, '10-jan-17', '20');
+insert into Supplies values (4, 4, '11-jan-17', '30');
+insert into Supplies values (5, 5, '13-jan-17', '30');
+insert into Supplies values (6, 6, '15-jan-17', '40');
+insert into Supplies values (7, 7, '17-jan-17', '40');
+insert into Supplies values (8, 8, '18-jan-17', '25');
+insert into Supplies values (9, 9, '23-jan-17', '30');
+
+
+
+drop table Helps cascade constraints;
+create table Helps
+(EmpID integer not null,
+CustID integer not null,
+DayHelped TIMESTAMP not null,
+Result char(100) not null,
+primary key (EmpID, CustID, DayHelped),
+foreign key (EmpID) REFERENCES Employee (EmpID),
+foreign key (CustID) REFERENCES Customer (CustID));
+
+insert into Helps values (1, 1,'12-Jan-17 04:23:01.99', 'yes');
+insert into Helps values (2, 2,'12-Jan-17 06:25:01.99', 'yes');
+insert into Helps values (3, 3,'19-Jan-17 06:49:01.99', 'yes');
+insert into Helps values (4, 4,'19-Jan-17 06:50:01.99', 'yes');
+insert into Helps values (5, 5,'19-Jan-17 07:20:01.99', 'yes');
+insert into Helps values (6, 5,'20-Jan-17 07:30:01.99', 'yes');
+insert into Helps values (7, 7,'21-Jan-17 08:40:01.99', 'yes');
+insert into Helps values (8, 8,'23-Jan-17 08:55:01.99', 'yes');
+insert into Helps values (9, 9,'29-Jan-17 09:12:01.99', 'yes');
+
+
