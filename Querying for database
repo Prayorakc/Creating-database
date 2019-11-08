@@ -1,0 +1,217 @@
+SELECT ProductID, ProductName, ProductSize, Price
+FROM Product
+WHERE Price  < 60.00;
+
+ PRODUCTID PRODUCTNAME                    PRODU      PRICE
+---------- ------------------------------ ----- ----------
+         1 Dresses                        XL         30.64
+         3 Dress                          XL         25.41
+         4 Long dress                     XS         42.33
+         5 Dress Shirt                    XL         30.64
+         6 Skirt                          XS         22.64
+         7 Skater dress                   M          25.64
+         8 Pants                          L          30.64
+         9 Dresses                        M          30.64
+
+8 rows selected.
+
+
+-This query is to show all the products in a XL size we have and their description
+
+SELECT ProductName, Description, color, productSize
+FROM Product
+WHERE ProductSize = 'XL';
+
+PRODUCTNAME                    DESCRIPTION                    COLOR      PRODU
+------------------------------ ------------------------------ ---------- -----
+Dresses                        Floral dresses                 Mauv       XL
+Dress                          Vacation dresses               Yellow     XL
+Dress Shirt                    Cocktail dresses               Teal       XL
+
+
+
+- this query will help to identify which orders are still procesing after 01-jan-2017
+
+SELECT orderID, Ordersdate, orderstatus
+FROM customerorder
+WHERE ordersdate >'01-jan-2017';
+
+  2    3  
+   ORDERID ORDERSDAT ORDERSTATUS
+---------- --------- ---------------
+         1 06-JAN-17 Processing
+         2 09-JAN-17 Processing
+         3 01-JAN-18 Processing
+         4 04-JAN-17 Processing
+         5 09-JAN-17 Processing
+         6 06-JAN-17 Processing
+         7 06-JAN-17 Processing
+         8 06-JAN-17 Processing
+         9 06-JAN-17 Processing
+
+
+-This query is to find the supplier’s state for the ordered product
+
+SELECT Product.ProductName, Supplier.SupplierState, Product.OrderID, Supplier.SupplierName
+FROM Product, Supplier
+GROUP BY Product.ProductName, Supplier.SupplierState, Product.OrderID, Supplier.SupplierName
+HAVING (((Supplier.SupplierState)='TX'));
+
+
+PRODUCTNAME                    SU    ORDERID SUPPLIERNAME
+------------------------------ -- ---------- --------------------
+Pants                          TX          8 Skajo
+Jeans                          TX          2 Skajo
+Dresses                        TX          1 Skajo
+Dress                          TX          3 Skajo
+Skirt                          TX          6 Skajo
+Skater dress                   TX          7 Skajo
+Long dress                     TX          4 Skajo
+Dress Shirt                    TX          5 Skajo
+Dresses                        TX          9 Skajo
+
+9 rows selected.
+
+
+-To find the order status and the warehouse ID for the customer whose first name is Rab
+
+SELECT Customer.CustFirstName, CustomerOrder.OrdersDate, CustomerOrder.OrderStatus, Warehouse.WarehouseID, Warehouse.WarehouseName
+FROM Employee, Supplier, Warehouse, Customer INNER JOIN CustomerOrder ON Customer.CustID = CustomerOrder.CustID
+GROUP BY Customer.CustFirstName, CustomerOrder.OrdersDate, CustomerOrder.OrderStatus, Warehouse.WarehouseID, Warehouse.WarehouseName
+HAVING (((Customer.CustFirstName)='Rab'));
+
+  2    3    4  
+CUSTFIRSTNAME        ORDERSDAT ORDERSTATUS     WAREHOUSEID
+-------------------- --------- --------------- -----------
+WAREHOUSENAME
+-------------------------
+Rab                  04-JAN-17 Processing                4
+Feednation
+
+Rab                  04-JAN-17 Processing                1
+Photobug
+
+Rab                  04-JAN-17 Processing                2
+Skilith
+
+
+CUSTFIRSTNAME        ORDERSDAT ORDERSTATUS     WAREHOUSEID
+-------------------- --------- --------------- -----------
+WAREHOUSENAME
+-------------------------
+Rab                  04-JAN-17 Processing                5
+Techbrunch
+
+Rab                  04-JAN-17 Processing                7
+Spacex
+
+Rab                  04-JAN-17 Processing                3
+Aimbu
+
+
+CUSTFIRSTNAME        ORDERSDAT ORDERSTATUS     WAREHOUSEID
+-------------------- --------- --------------- -----------
+WAREHOUSENAME
+-------------------------
+Rab                  04-JAN-17 Processing                9
+ProjectX
+
+Rab                  04-JAN-17 Processing                6
+Laughingsquid
+
+Rab                  04-JAN-17 Processing                8
+Eiffel
+
+
+9 rows selected.
+
+
+- this query is to see what employee helped which customer at what day and time and their order status 
+
+SELECT Customer.CustFirstName, Customer.CustLastName, CustomerOrder.OrderStatus, helps.EmpID, helps.DayHelped
+FROM Employee, (Customer INNER JOIN CustomerOrder ON Customer.CustID = CustomerOrder.CustID) INNER JOIN helps ON Customer.CustID = helps.CustID
+GROUP BY Customer.CustFirstName, Customer.CustLastName, CustomerOrder.OrderStatus, helps.EmpID, helps.DayHelped;
+
+
+  2    3  
+CUSTFIRSTNAME        CUSTLASTNAME         ORDERSTATUS          EMPID
+-------------------- -------------------- --------------- ----------
+DAYHELPED
+---------------------------------------------------------------------------
+Laureen              Ditchfield           Processing               6
+20-JAN-17 07.30.01.990000 AM
+
+Rip                  Gerling              Processing               1
+12-JAN-17 04.23.01.990000 AM
+
+Laureen              Ditchfield           Processing               5
+19-JAN-17 07.20.01.990000 AM
+
+
+CUSTFIRSTNAME        CUSTLASTNAME         ORDERSTATUS          EMPID
+-------------------- -------------------- --------------- ----------
+DAYHELPED
+---------------------------------------------------------------------------
+Rab                  Daud                 Processing               4
+19-JAN-17 06.50.01.990000 AM
+
+Katherina            Paye                 Processing               2
+12-JAN-17 06.25.01.990000 AM
+
+Laura                Coppello             Processing               7
+21-JAN-17 08.40.01.990000 AM
+
+
+CUSTFIRSTNAME        CUSTLASTNAME         ORDERSTATUS          EMPID
+-------------------- -------------------- --------------- ----------
+DAYHELPED
+---------------------------------------------------------------------------
+Simon                Benjamin             Processing               9
+29-JAN-17 09.12.01.990000 AM
+
+Jeff                 Bezos                Processing               8
+23-JAN-17 08.55.01.990000 AM
+
+Ginevra              Addlestone           Processing               3
+19-JAN-17 06.49.01.990000 AM
+
+
+
+-This query is to look for a customer’s order and check if we have that size in warehouse. 
+
+SELECT Min(CustomerOrder.CustID) AS MinOfCustID, Product.ProductName, Warehouse.WarehouseName, Product.ProductSize
+FROM Warehouse, Supplier, Product INNER JOIN CustomerOrder ON Product.OrderID = CustomerOrder.OrderID
+GROUP BY Product.ProductName, Warehouse.WarehouseName, Product.ProductSize
+HAVING (((Product.ProductName)='Dresses') AND ((Product.ProductSize)='XL'));
+
+SQL>   2    3    4  
+MINOFCUSTID PRODUCTNAME                    WAREHOUSENAME             PRODU
+----------- ------------------------------ ------------------------- -----
+          1 Dresses                        Photobug                  XL
+          1 Dresses                        Feednation                XL
+          1 Dresses                        Aimbu                     XL
+          1 Dresses                        Laughingsquid             XL
+          1 Dresses                        Skilith                   XL
+          1 Dresses                        Techbrunch                XL
+          1 Dresses                        Eiffel                    XL
+          1 Dresses                        ProjectX                  XL
+          1 Dresses                        Spacex                    XL
+
+9 rows selected.
+
+
+
+-To find which customers paid with "jcb", the customer name and where they are from 
+
+SELECT CustomerOrder.OrderPayment, Customer.CustFirstName, Customer.CustLastName, Customer.CustState
+FROM CustomerOrder INNER JOIN Customer ON CustomerOrder.CustID = Customer.CustID
+WHERE (((CustomerOrder.OrderPayment)='jcb'));
+
+  2    3  
+ORDERPAYMENT    CUSTFIRSTNAME        CUSTLASTNAME         CUSTSTATE
+--------------- -------------------- -------------------- --------------------
+jcb             Katherina            Paye                 Florida
+jcb             Ginevra              Addlestone           California
+jcb             Angelina             Ricardo              Texas
+jcb             Laura                Coppello             Texas
+
